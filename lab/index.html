@@ -4,23 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background-image: url(2.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        table{
+            background-image: url(background.jpg);
+        }
+        div{
+            margin: 10px;
+            padding:10px;
+            border-style: double;
+            border-color: brown;
+            border-Width: 50px;
+        }
+    </style>
 </head>
-<body>
-    <h1 style="color: blue; font: 2rem;">welcome!</h1>
 
+
+<body>
+    <div>something</div>
+
+    <h1 style="color: blue; font: 2rem;">welcome!</h1>
+    
     <img src="cat.jpg" alt="貓" style="width:300px; height:150px; ">
 
     <table border="1" style="width:300px; height:150px;" > 
         <tr>
-            <td colspan="3">1</td>
+            <td align="center" colspan="3"><b>1</b></td>
         </tr>
         <tr>
-            <td rowspan="2">4</td>
-            <td>5</td>
-            <td rowspan="2">6</td>
+            <td align="center" rowspan="2"><b>4</b></td>
+            <td align="center"><b>5</b></td>
+            <td align="center" rowspan="2"><b>6</b></td>
         </tr>
         <tr>
-            <td>8</td>
+            <td align="center"><b>8</b></td>
         </tr>
 
         <ol type="I">
