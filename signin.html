@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh" >
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8">
+<title>帳戶</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+
+<script>var PAGEPATH='/accounts/sign/signIn.js?v=20190709';</script>
+
+<link rel="stylesheet" href="https://account.samsung.com/accounts/v1/resources/js/common/angular-block-ui/angular-block-ui.min.css">
+<link rel="stylesheet" type="text/css" href="https://account.samsung.com/accounts/v1/resources/css/v2/angular-material.css?20200812054251">
+<link rel="stylesheet" type="text/css" href="https://account.samsung.com/accounts/v1/resources/one-ui/css/default.css?20200812054251">
+
+<link type="image/x-icon" rel="shortcut icon" href="https://account.samsung.com/favicon.ico?20200812054251" />
+<!--[if lt IE 9]>
+	<script src="https://account.samsung.com/accounts/v1/resources/js/common/json/json3.min.js"></script>
+	<script src="https://account.samsung.com/accounts/v1/resources/js/common/html5shiv/html5shiv.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+//<![CDATA[
+	var wipLogicalPath			= "/accounts/v1";
+	var wipResourcesVerDt		= "20200812054251";
+	var wipCancelURI			= "https://account.samsung.com/membership/intro?state=vCbrSiWUOZpITWcYQLexLSrdjXJtRPEk";
+	var wipGoBackURI			= "https://account.samsung.com/membership/intro?state=vCbrSiWUOZpITWcYQLexLSrdjXJtRPEk";
+	var loLangCD				= "zh";
+	var isTextRightAlign		= false;
+	var isTextFirstFamilyName	= true;
+	var isTextFirstDateYear		= true;
+	var wipAcsChnlEnum			= "WEB";
+	var wipViewTypeEnum			= "v2";
+	var userGeoIPCnty3dgtCd		= "TWN";
+	var userAcsCnty3dgtCd		= "HKG";
+	var userCnty3dgtCd			= "";
+	var wipUriEnum				= "signIn";
+	var APPNAME					= "MBR";
+	var sJSESSIONID				= "aab95906-6a34-4947-b01d-5d07da71fdb9";
+	var wipCsrf 				= {'token' : '50d1ac75-a4ce-4b42-8c24-03ca6b411c0c', 'headerName' : 'X-CSRF-TOKEN'};
+	var wipResourcesUrl			= "https://account.samsung.com/accounts/v1/resources";
+//]]>
+
+    if(userAcsCnty3dgtCd !== "CHN" && userGeoIPCnty3dgtCd !== "CHN"
+        && wipResourcesUrl.indexOf("account.samsung.cn") === -1 && wipResourcesUrl.indexOf("chn.account.samsung.com") === -1) {
+        var containerId;
+        if(wipResourcesUrl.indexOf("sad") !== -1) {
+          containerId = 'GTM-KCH2BM6';
+        }
+        else if(wipResourcesUrl.indexOf("stg") !== -1) {
+          containerId = 'GTM-W3S5ZM6';
+        }
+        else {
+          containerId = 'GTM-5C6SNNV';
+        }
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer', containerId);
+    }
+
+	var createPostMessage = function(){
+
+	    var sendPostMessage = function(){
+	        console.log("");
+	    }
+
+	    if(APPNAME.indexOf("samsung_com_us") !== -1) {
+	        if(document.getElementsByClassName('wrapper')[0]) {
+	            var pageType = "signin";
+	            if(document.querySelector('form[name="signUpForm"]')) {
+	                pageType = "signup";
+	            } else if (document.querySelector('form[name=findIdForm]')){
+	                pageType = "findid";
+	            } else if (document.querySelector('form[name=rstPwd]')){
+	                pageType = "resetpwd";
+	            } else {
+	                pageType = "others";
+	            }
+	            sendPostMessage = function(){
+	                window.parent.postMessage({
+	                    pageType: pageType
+	                }, '*');
+	            }
+	        }
+	    }
+	    sendPostMessage();
+	}
+
+</script>
+<!-- js loading -->
+<script src="https://account.samsung.com/accounts/v1/resources/js/common/wip.js?20200812054251"></script>
+
+<script src="https://account.samsung.com/accounts/v1/resources/js/v2/app.js?20200812054251"></script>
+<script src="https://account.samsung.com/accounts/v1/resources/js/v2/run.js?20200812054251"></script>
+
+</head>
+<script type="text/javascript">
+	window.document.title = '登入 | 帳戶';
+//<![CDATA[
+	//mainController global variable
+	var wipEnc = {"pblcKyTxt":"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCL6k51MyxZgvM/zXfZ30+Z/nXorNYEjlkMwwh9HmvSF7xE49fghlrAVyzcABmkvsWGmYIbuuR5iq9uAjlOVB5i+FZEdnCms3ndOFpeZWqUOIYJhu3P30v94vMG4szIrB7PAB974AeIG7tK7FcgUtqBjBlf1/djspFMShsASuohvwIDAQAB","lgnEncTp":"1","pbeKySpcIters":"200"};
+	var goBackURL = 'https://account.samsung.com/membership/intro?state=vCbrSiWUOZpITWcYQLexLSrdjXJtRPEk';
+	var iptLgnPlnID = '';
+	var continueWith3rdParty = 'GG';
+	var assertion = null;
+	var isAdmin = false;
+	var enablePwa = false;
+//]]>
+</script>
+<style>
+	.error-msg {display:block !important}
+
+	.cover {
+		background: grey;
+		position: fixed;
+		top:0;
+		left:0;
+		bottom:0;
+		right:0;
+		height:100%;
+		width:100%;
+		z-index: 2;
+		opacity: 0.5;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		!important
+	}
+	.wrapper-cover{
+		z-index: 1;
+		!important
+	}
+
+	.loading-container { width:200px; height:100px; overflow: hidden; }
+	.circle { position: absolute; width: 100%; height: 200%; border-radius: 50%; overflow: hidden; }
+	.top, .bottom { position: relative; width: 100%; height: 100%; overflow: hidden; animation: rotate .8s linear infinite; }
+	.top { transform-origin: 50% 100%; }
+	.top .circle { box-shadow: inset 0 0 0 10px #41c91f; }
+	.bottom { transform-origin: 50% 0; }
+	.bottom .circle { box-shadow: inset 0 0 0 10px #01b1d1; top: -100px !important; }
+	@keyframes rotate {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); /* filter:hue-rotate(360deg); */ }
+	}
+	.loading { margin:auto; text-align: center; width:fit-content; }
+	.loading.medium .loading-container { width:60px; height:30px; }
+	.loading.medium .top .circle { box-shadow: inset 0 0 0 3px #41c91f; }
+	.loading.medium .bottom .circle{ box-shadow: inset 0 0 0 3px #01b1d1; top:-30px !important;}
+
+</style>
+
+
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
+
+<body data-ng-cloak onload="createPostMessage();" class="one-card-ui">
+
+<div class="wrapper false? wrapper-cover : ''" data-ng-controller="cmmController as cmm">
+	
+<header class="one-header">
+	<div class="header-inner">
+		<div class="logo">
+		
+		</div>
+	</div>
+</header>
+	<main class="one-main" data-ng-controller="signInController as vm" >
+		<div class="cover" data-ng-if="pwaIsCalling">
+			<div class="loading medium">
+				<div class="loading-container">
+					<div class="top">
+						<div class="circle"></div>
+					</div>
+				</div>
+				<div class="loading-container">
+					<div class="bottom">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="main-inner">
+			<!-- container -->
+			<div class="container loginForm">
+				<div class="title">
+					<h1>登入至您的帳戶</h1>
+				</div>
+				<!-- div class="subDesc">서브 설명 들어가는 곳</div -->
+				<div class="content" ng-init='
+				
+				'>
+
+					<div class="one-forms-login">
+						<form novalidate autocomplete="off">
+							<fieldset>
+								<legend>Account Samsung login</legend>
+
+								<div id="ctnLgnPlnID" data-ng-if="false" class="one-input-container">
+									<label id="lblLgnPlnID" for="iptLgnPlnID">電子郵件或電話號碼</label>
+									<input data-ng-model="vm.iptLgnPlnID" id="iptLgnPlnID" type="email" spellcheck="false" ng-model-options="{ updateOn: 'keyup blur' }" aria-required="true" aria-invalid="{{err.iptLgnPlnID}}" aria-describedby="{{err.iptLgnPlnID ? err.code : ''}}" maxlength="100" value=""/>
+									<div class="error-msg">
+										<div data-ng-show="((err.iptLgnPlnPD || err.iptLgnPlnID) && err.code == '01')" id="{{err.code}}">請輸入 ID。</div>
+									</div>
+								</div>
+
+								<div id="ctnLgnPlnID" data-ng-if="true" class="one-input-container">
+									<label id="lblLgnPlnID" for="iptLgnPlnID">電子郵件</label>
+									<input data-ng-model="vm.iptLgnPlnID" id="iptLgnPlnID" type="email" spellcheck="false" ng-model-options="{ updateOn: 'keyup blur' }" aria-required="true" aria-invalid="{{err.iptLgnPlnID}}" aria-describedby="{{err.iptLgnPlnID ? err.code : ''}}" maxlength="100" value=""/>
+									<div class="error-msg">
+										<div data-ng-show="((err.iptLgnPlnPD || err.iptLgnPlnID) && err.code == '01')" id="{{err.code}}">請輸入 ID。</div>
+									</div>
+								</div>
+
+								<div class="one-input-container">
+									<label for="iptLgnPlnPD">密碼</label>
+									<input data-ng-model="vm.iptLgnPlnPD" id="iptLgnPlnPD" type="{{vm.textForPassword}}" ng-model-options="{ updateOn: 'keyup blur' }" aria-required="true" aria-invalid="{{err.iptLgnPlnPD || err.iptLgnPlnAdminPD}}" aria-describedby="{{err.iptLgnPlnPD || err.iptLgnPlnAdminPD ? err.code : ''}}" ng-enter="$parent.submitForCaptcha()" data-ng-pattern="vm.isAdmin ? adminPasswordRegex : ''" data-ng-blur="vm.iptLgnPlnPDFocus = false;" data-ng-focus="vm.iptLgnPlnPDFocus = true" not-space  maxlength="512" />
+									<div class="error-msg">
+								</div>
+
+
+								<!-- remember id 관련 추가 -->
+								<div class="one-checkBox mbr_rememberid" id="rememberID">
+									<input type="checkbox" id="remIdChkYN" data-ng-model="vm.remIdChkYN" ng-enter>
+									<label for="remIdChkYN"><span></span>記住我的 ID</label>
+
+								</div>
+								<!-- // remember id 관련 추가 -->
+
+								<div class="banner" data-ng-if="vm.bannerSrc">
+									<img data-ng-src="{{vm.bannerSrc}}" alt="samsung banneer" data-ng-click="btnChineseSrc();">
+								</div>
+
+								<!-- capcha -->
+								
+							<script type="text/javascript">
+								//<![CDATA[
+								var RecaptchaOptions = {
+											theme : 'custom'
+										};
+				       			//]]>
+							</script> 
+							<div class="simpleCaptchaArea" data-ng-if="$parent.captchaTypeEnum == 'S'">
+								<div class="captchaContainer">
+									<div class="captchaImg" id="recaptcha_image" tabindex="0" captchatype="$parent.captchaTypeEnum" captchakey="notregistered" tabindex="0" alt="這是一個同時包含字母與數字的安全碼。請在您的鍵盤上按下 Tab 鍵兩次並選擇語音協助按鍵。" recaptcha-image></div>
+									<div class="captchaBtns">
+										<button type="button" data-ng-click="vm.responseCapthcha = null;$parent.captchaRefresh()"><img src="https://account.samsung.com/accounts/v1/resources/images/v2/ico_reload.png" alt="取得新代碼"></button>
+										<button type="button" data-ng-click="$parent.audioCaptcha()" data-ng-if="$parent.angularCountryCode == 'KOR'"><img src="https://account.samsung.com/accounts/v1/resources/images/v2/ico_sound.png" alt="取得音訊代碼"></button>
+									</div>
+								</div>
+							</div>
+							<div class="simpleCaptchaArea" data-ng-if="$parent.captchaTypeEnum == 'A'">
+									</div>
+								</div>
+							</div>
+							<div id="audioCaptchaArea" style="display:block; height:0; font-size:0; line-height:0;"></div>
+							<div class="simpleCaptchaArea" data-ng-if="$parent.captchaTypeEnum == 'R'">
+								<div class="captchaContainer">
+									<div class="captchaImg" id="recaptcha_image" captchatype="$parent.captchaTypeEnum" captchakey="$parent.captchaPublicKey" recaptcha-image></div>
+									<div class="captchaBtns">
+										<button type="button" data-ng-click="vm.responseCapthcha = null;$parent.recaptchaRefresh()"><img src="https://account.samsung.com/accounts/v1/resources/images/v2/ico_reload.png" alt="取得新代碼"></button>
+									</div>
+								</div>
+			 					<script data-ng-src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+							</div>
+							<div class="one-chptcha" data-ng-if="$parent.captchaTypeEnum == 'G'">
+								<script data-ng-src="//www.google.com/recaptcha/api.js?hl=zh&render=onload" async defer></script>
+								<div data-ng-controller="recaptchaController as grec">	
+									<div class="captchaContainer">
+										<div class="g-recaptcha" data-sitekey="{{$parent.$parent.greCaptchaSiteKey}}" data-callback="gRecaptchaCallback" data-expired-callback="gRecaptchaExpiredCallback"  ng-model="vm.responseCapthcha"></div>
+									</div>
+								</div>
+								<div class="error-msg">
+									<div data-ng-show="err.responseCapthchaCode == '01'" id="cap{{err.responseCapthchaCode}}">請輸入驗證碼</div>
+									<div data-ng-show="err.responseCapthchaCode == '99'" id="cap{{err.responseCapthchaCode}}">已輸入無效的 ID、密碼或安全碼。<br>請重試。</div>
+									<div data-ng-show="err.responseCapthchaCode == '02'" id="cap{{err.responseCapthchaCode}}" data-ng-bind="err.message"></div>
+								</div>									
+								<script src="https://account.samsung.com/accounts/v1/resources/js/v2/cmm/greCaptcha.js?20200812054251"></script>								
+							</div>
+							<div class="reCaptchaInvisibleArea" data-ng-if="$parent.captchaTypeEnum == 'I'">
+								<script data-ng-src="//www.google.com/recaptcha/api.js?hl=zh&render=onload" async defer></script>
+								<div data-ng-controller="recaptchaInvisibleController as greci">
+									<div class="captchaContainer">
+										<div class="g-recaptcha" data-sitekey="{{$parent.$parent.greCaptchaInvisibleSiteKey}}" data-callback="gRecaptchaInvisibleCallback" data-expired-callback="gRecaptchaInvisibleExpiredCallback" data-error-callback="gRecaptchaInvisibleErrorCallback" data-badge="bottomright" data-size="invisible"></div>
+<!-- 										<div class="g-recaptcha" data-sitekey="{{$parent.$parent.greCaptchaInvisibleSiteKey}}" data-callback="gRecaptchaInvisibleCallback" data-expired-callback="gRecaptchaInvisibleExpiredCallback" data-error-callback="gRecaptchaInvisibleErrorCallback" data-badge="inline" data-size="invisible"></div> -->
+									</div>
+								</div>
+<!-- 								<div class="error-msg"> -->
+<!-- 									<div data-ng-show="err.responseCapthchaCode == '99'" id="cap{{err.responseCapthchaCode}}">已輸入無效的 ID、密碼或安全碼。<br>請重試。</div> -->
+<!-- 									<div data-ng-show="err.responseCapthchaCode == '02'" id="cap{{err.responseCapthchaCode}}">ID 或密碼不正確。</div>									 -->
+<!-- 								</div> -->
+								<script src="https://account.samsung.com/accounts/v1/resources/js/v2/cmm/greCaptchaInvisible.js?20200812054251"></script>		
+							</div>
+							<div class="one-input-container {{err.responseCapthcha ? 'one-error' : ''}}" data-ng-show="$parent.captchaTypeEnum != null && $parent.captchaTypeEnum != 'G' && $parent.captchaTypeEnum != 'I'">
+								<label for="{{$parent.captchaTypeEnum == 'R' ? 'recaptcha_response_field' : 'responseCapthcha'}}">安全代碼</label>
+								<input data-ng-model="vm.responseCapthcha" id="{{$parent.captchaTypeEnum == 'R' ? 'recaptcha_response_field' : 'responseCapthcha'}}" name="{{$parent.captchaTypeEnum == 'R' ? 'recaptcha_response_field' : 'responseCapthcha'}}" type="text" maxlength="{{$parent.captchaTypeEnum == 'G' ? '1000' : '50'}}" ng-model-options="{ updateOn: 'keyup blur' }" aria-required="true" aria-invalid="{{err.responseCapthcha}}" aria-describedby="{{err.responseCapthcha ? 'cap' + err.responseCapthchaCode: ''}}" not-enter />
+								<div class="error-msg">
+									<div data-ng-show="err.responseCapthcha && err.responseCapthchaCode == '01'" id="cap{{err.responseCapthchaCode}}">請輸入驗證碼</div>
+									<div data-ng-show="err.responseCapthcha && err.responseCapthchaCode == '99'" id="cap{{err.responseCapthchaCode}}">已輸入無效的 ID、密碼或安全碼。<br>請重試。</div>
+									<div data-ng-show="err.responseCapthcha && err.responseCapthchaCode == '02'" data-ng-bind="err.message" id="cap{{err.responseCapthchaCode}}"></div>
+								</div>
+							</div>
+
+
+
+
+								<!-- //capcha -->
+								<div class="mbr_signin">
+								<div class="one-btn-container">
+									<button class="one-cancel one-button" data-ng-show="vm.continueWith3rdParty == 'NONE'" id="signInButton" data-ng-disabled="(vm.isAdmin && (err.iptLgnPlnAdminPD || err.iptLgnPlnPD))" data-ng-click="$parent.submitForCaptcha()" type="button">登入</button>
+									<button class="one-cancel one-button" data-ng-show="vm.continueWith3rdParty != 'NONE'" id="signInButton" data-ng-click="$parent.submitForCaptcha()" type="button">登入</button>
+								</div>
+
+								<div class="one-btn-container" data-ng-if="false">
+									<button class="one-cancel one-button" data-ng-show="vm.continueWith3rdParty != 'NONE'" id="pwa-button" data-ng-click="checkPwa()" ng-disabled="pwaIsCalling" type="button">Galaxy SSO</button>
+								</div>
+
+								<ul>
+									<li data-ng-show="vm.continueWith3rdParty != 'NONE'">
+										<a href="#" data-ng-click="findInfo()">
+
+											尋找 ID或重設密碼
+										</a>
+
+									</li>
+									<li data-ng-show="vm.continueWith3rdParty != 'NONE' && !vm.rmvCrtBtnYN">
+										<a href="#" data-ng-click="signUp()">创建帳戶</a>
+									</li>
+								</ul>
+								</div>
+								<!-- 구글 로그인 -->
+								<div class="one-btn-container google" data-ng-show="vm.continueWith3rdParty == 'GG'">
+									<button class="one-primary one-button" id="googleSignInButton" data-ng-click=googleSignIn()  type="button">使用 Google 繼續</button>
+								</div>
+
+								<div class="one-btn-container wechat" data-ng-show="vm.continueWith3rdParty == 'WC'" >
+									<button class="one-primary one-button" id="wechatSignInButton" data-ng-click=wechatSignIn()  type="button">使用微信繼續</button>
+								</div>
+
+								<!--// 구글 로그인 -->
+								<div class="mbr_signin">
+								<ul>
+									<li data-ng-show="vm.continueWith3rdParty == 'NONE'">
+										<a href="#" data-ng-click="findInfo()">尋找 ID或重設密碼</a>
+									</li>
+									<li data-ng-show="vm.continueWith3rdParty == 'NONE' && !vm.rmvCrtBtnYN">
+										<a href="#" data-ng-click="signUp()">创建帳戶</a>
+									</li>
+								</ul>
+								</div>
+
+
+								<div class="signin-tooltip" data-ng-show="vm.isAdmin">
+									<dl>
+										<dt>密碼</dt>
+										<dd>最少10個字元。同時使用字母與數字。不可使用相同字元連續3次。不要使用您的電子郵件地址的一部分。</dd>
+									</dl>
+									<p></p>
+								</div>
+
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+    
+<!-- javascript -->
+<script src="https://account.samsung.com/accounts/v1/resources/one-ui/js/common/jquery/jquery.min.js"></script>
+
+<script>
+  window.onload = function(){
+
+    inputEvent();
+    if($('form').find(':input')[0]!==undefined){
+      $(':focus').blur();
+      $('form').find(':input')[0].focus();
+    }
+  };
+
+  var inputEvent = function() {
+    var $inputs = $('form').find(':input');
+    $inputs.each(function() {
+      var $input = $(this),
+          $label = $input.parent('div.one-input-container');
+      if ($input.val())
+        $label.addClass('active');
+
+      $input.focusin(function() {
+        $label.addClass('focus');
+        $label.siblings('div.flexbdy').addClass('off');
+      });
+      $input.change(function() {
+        $label.addClass('active');
+      });
+      $input.focusout(function() {
+        $label.removeClass('focus');
+
+        if (!$input.val()) $label.removeClass('active').siblings('div.flexbdy').removeClass('off');
+      });
+    }
+    );
+  }
+</script>
+
+</body>
+</html>
