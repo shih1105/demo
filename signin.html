@@ -126,11 +126,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		!important
 	}
 	.wrapper-cover{
 		z-index: 1;
-		!important
 	}
 
 	.loading-container { width:200px; height:100px; overflow: hidden; }
@@ -224,7 +222,6 @@
 								<!-- remember id 관련 추가 -->
 								<div class="one-checkBox mbr_rememberid" id="rememberID">
 									<input type="checkbox" id="remIdChkYN" data-ng-model="vm.remIdChkYN" ng-enter>
-									<label for="remIdChkYN"><span></span>記住我的 ID</label>
 
 								</div>
 								<!-- // remember id 관련 추가 -->
@@ -309,7 +306,6 @@
 								<!-- //capcha -->
 								<div class="mbr_signin">
 								<div class="one-btn-container">
-									<button class="one-cancel one-button" data-ng-show="vm.continueWith3rdParty == 'NONE'" id="signInButton" data-ng-disabled="(vm.isAdmin && (err.iptLgnPlnAdminPD || err.iptLgnPlnPD))" data-ng-click="$parent.submitForCaptcha()" type="button">登入</button>
 									<button class="one-cancel one-button" data-ng-show="vm.continueWith3rdParty != 'NONE'" id="signInButton" data-ng-click="$parent.submitForCaptcha()" type="button">登入</button>
 								</div>
 
@@ -333,10 +329,6 @@
 								<!-- 구글 로그인 -->
 								<div class="one-btn-container google" data-ng-show="vm.continueWith3rdParty == 'GG'">
 									<button class="one-primary one-button" id="googleSignInButton" data-ng-click=googleSignIn()  type="button">使用 Google 繼續</button>
-								</div>
-
-								<div class="one-btn-container wechat" data-ng-show="vm.continueWith3rdParty == 'WC'" >
-									<button class="one-primary one-button" id="wechatSignInButton" data-ng-click=wechatSignIn()  type="button">使用微信繼續</button>
 								</div>
 
 								<!--// 구글 로그인 -->
